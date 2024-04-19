@@ -11,7 +11,7 @@ const doneDiv = document.getElementById('doneDiv');
 const submitButton = document.getElementById('submit');
 const initialsInput = document.getElementById('initials');
 
-
+// when start quiz button is clicked counter is shown
 document.addEventListener('DOMContentLoaded', function () {
 
   toggleButton.addEventListener('click', function () {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     question1Div.classList.remove('hidden');
     counterdiv.classList.remove('hidden');
   });
-
+// counter starts at 75 and counts down, when user clicks on answer with the id of incorrect, time is subtracted by 10
   let countdownValue = 75;
   let countdownInterval;
 
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+//score starts at 0, if user clicks on correct answer score increases by 10
 let score = 0;
 
 document.addEventListener('click', function (event) {
@@ -48,7 +49,7 @@ document.addEventListener('click', function (event) {
   }
 });
 
-
+// when a answer is clicked on, that question and its answers are hidden and a new set appears
 document.addEventListener('DOMContentLoaded', function () {
 
   question1Div.addEventListener('click', function () {
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
+//stores both score and user initals 
 submitButton.addEventListener('click', function () {
   const initials = initialsInput.value.trim();
   const score = countdown.textContent;
@@ -92,4 +93,27 @@ submitButton.addEventListener('click', function () {
   const storedScore = localStorage.getItem('userScore');
   console.log('Stored Initials:', storedInitials);
   console.log('Stored Score:', storedScore);
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const resultsButton = document.getElementById('results');
+  const highscoresParagraph = document.getElementById('highscores');
+
+//when view scores button is clicked hidden class is removed
+  resultsButton.addEventListener('click', function () {
+    highscoresParagraph.classList.toggle('hidden');
+    displayHighscores();
+  });
+// grabbing initals and score from local storage, if they exsist display the values, otherwise display no scores avaliable
+  function displayHighscores() {
+    const storedInitials = localStorage.getItem('userInitials');
+    const storedScore = localStorage.getItem('userScore');
+
+    if (storedInitials && storedScore) {
+      highscoresParagraph.textContent = `Initials: ${storedInitials}, Score: ${storedScore}`;
+    } else {
+      highscoresParagraph.textContent = 'No scores available.';
+    }
+  }
 });
