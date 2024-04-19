@@ -4,6 +4,8 @@
 
 The Code Quiz application is a fun way for users to test their coding knowledge through a timed quiz. It presents questions one by one, deducts time for incorrect answers, and allows users to save their initials and scores at the end of the quiz.
 
+(./assets/images/screenshot.jpeg)
+
 ## Features
 
 Start button to begin the quiz and start the timer
