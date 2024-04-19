@@ -39,6 +39,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+let score = 0;
+
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('correct')) {
+    score += 10;
+    countdown.textContent = score; 
+  }
+});
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -66,15 +75,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 submitButton.addEventListener('click', function () {
-
   const initials = initialsInput.value.trim();
+  const score = countdown.textContent;
 
-  if (initials !== '') {
-    localStorage.setItem('userInitials', initials); 
-    alert('Initials submitted successfully!');
+  if (initials && score !== '') {
+    localStorage.setItem('userInitials', initials);
+    localStorage.setItem('userScore', score);
+    alert('Initials and score submitted successfully!');
     initialsInput.value = '';
+
   } else {
-    alert('Please enter your initials.');
+    alert('Please enter your initials and score.');
   }
- localStorage.getItem(initials);
+
+  const storedInitials = localStorage.getItem('userInitials');
+  const storedScore = localStorage.getItem('userScore');
+  console.log('Stored Initials:', storedInitials);
+  console.log('Stored Score:', storedScore);
 });
