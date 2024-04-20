@@ -39,6 +39,10 @@ HTML/CSS
 JavaScript
 Local Storage
 
+# Link to deployed page
+
+https://matae300.github.io/JavaScript-Test/
+
 ## Credits
 
 This project was created by Matheus Almeida.
